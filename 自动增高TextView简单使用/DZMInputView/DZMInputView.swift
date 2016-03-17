@@ -18,6 +18,7 @@ class DZMInputView: UIView {
     private var OriginH:CGFloat = 0                             // 原来的高度
     private var IsInit:Bool = true                              // 是否是初始化第一次
     private var TextViewSpace:CGFloat = 5                       // textView默认四周的间距
+    var TempDuration:Double = 0                                 // 用来临时记录的动画时间 方便继承后可以使用
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -45,7 +46,8 @@ class DZMInputView: UIView {
         super.layoutSubviews()
         
         // 设置动画时间
-        var Duration:Double = AnimationDuration
+        TempDuration = AnimationDuration
+        
         let w = frame.size.width
         let h = frame.size.height
         let textViewW = w - inset.right - inset.left
@@ -53,10 +55,10 @@ class DZMInputView: UIView {
         
         if IsInit {
             IsInit = false
-            Duration = 0
+            TempDuration = 0
         }
         
-        UIView.animateWithDuration(Duration) { [weak self]() -> Void in
+        UIView.animateWithDuration(TempDuration) { [weak self]() -> Void in
             
             self!.textView.frame = CGRectMake(self!.inset.left, self!.inset.top, textViewW, textViewH)
         }
