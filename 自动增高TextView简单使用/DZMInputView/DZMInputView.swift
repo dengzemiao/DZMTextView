@@ -80,7 +80,7 @@ class DZMInputView: UIView {
         
         let h = textViewSize.height + textView.textContainerInset.top + textView.textContainerInset.bottom + inset.top + inset.bottom
     
-        changeH = h - OriginH
+        if OriginH > 0 {changeH = h - OriginH}
         
         OriginH = h
         
