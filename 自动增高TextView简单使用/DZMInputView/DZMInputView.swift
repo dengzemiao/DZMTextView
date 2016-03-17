@@ -83,7 +83,7 @@ class DZMInputView: UIView {
         changeH = h - OriginH
         
         OriginH = h
-        print("\(h)")
+        
         return h
     }
 
