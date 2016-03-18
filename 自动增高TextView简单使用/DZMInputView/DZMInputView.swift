@@ -70,6 +70,7 @@ class DZMInputView: UIView {
      */
     func height() ->CGFloat {
         
+        // 计算text  假如有需要输入的是attributedText 计算attributedText则把这里的text 换成 attributedText
         var textStr = textView.text
         
         if textView.text.isEmpty {
