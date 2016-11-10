@@ -15,9 +15,9 @@ class DZMInputView: UIView {
     var AnimationDuration:Double = 0.25                         // 动画时间
     var textView:UITextView!                                    // textView
     
-    private var OriginH:CGFloat = 0                             // 原来的高度
-    private var IsInit:Bool = true                              // 是否是初始化第一次
-    private var TextViewSpace:CGFloat = 5                       // textView默认四周的间距
+    fileprivate var OriginH:CGFloat = 0                             // 原来的高度
+    fileprivate var IsInit:Bool = true                              // 是否是初始化第一次
+    fileprivate var TextViewSpace:CGFloat = 5                       // textView默认四周的间距
     var TempDuration:Double = 0                                 // 用来临时记录的动画时间 方便继承后可以使用
     
     override init(frame: CGRect) {
@@ -30,13 +30,13 @@ class DZMInputView: UIView {
         
         // 输入框
         textView = UITextView()
-        textView.backgroundColor = UIColor.greenColor()
+        textView.backgroundColor = UIColor.green
         textView.bounces = false
-        textView.scrollEnabled = false
-        textView.font = UIFont.systemFontOfSize(13)
+        textView.isScrollEnabled = false
+        textView.font = UIFont.systemFont(ofSize: 13)
         textView.textContainerInset = UIEdgeInsetsMake(8, 5, 8, 5)
         addSubview(textView)
-        textView.layer.borderColor = UIColor.grayColor().CGColor
+        textView.layer.borderColor = UIColor.gray.cgColor
         textView.layer.borderWidth = 1
         textView.layer.cornerRadius = 3
         textView.layer.masksToBounds = true
@@ -58,10 +58,10 @@ class DZMInputView: UIView {
             TempDuration = 0
         }
         
-        UIView.animateWithDuration(TempDuration) { [weak self]() -> Void in
+        UIView.animate(withDuration: TempDuration, animations: { [weak self]() -> Void in
             
-            self!.textView.frame = CGRectMake(self!.inset.left, self!.inset.top, textViewW, textViewH)
-        }
+            self!.textView.frame = CGRect(x: self!.inset.left, y: self!.inset.top, width: textViewW, height: textViewH)
+        }) 
 
     }
     
@@ -71,15 +71,14 @@ class DZMInputView: UIView {
     func height() ->CGFloat {
         
         // 计算text  假如有需要输入的是attributedText 计算attributedText则把这里的text 换成 attributedText
-        var textStr = textView.text
+        var textStr:String = textView.text
         
         if textView.text.isEmpty {
             textStr = "1"
         }
         
         let maxW = textView.frame.width - textView.textContainerInset.left - textView.textContainerInset.right - 2*TextViewSpace
-        
-        let textViewSize = (textStr as NSString).boundingRectWithSize(CGSizeMake(maxW, CGFloat.max), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName:textView.font!], context: nil)
+        let textViewSize = (textStr as NSString).boundingRect(with: CGSize(width: maxW, height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName:textView.font!], context: nil)
         
         let h = textViewSize.height + textView.textContainerInset.top + textView.textContainerInset.bottom + inset.top + inset.bottom
     

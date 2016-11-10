@@ -20,38 +20,38 @@ class ViewController: UIViewController,UITextViewDelegate {
         // 用于继承修改 inset 即可 不继承可以直接使用
         inputview = DZMInputView()
         inputview.textView.tag = 0
-        inputview.backgroundColor = UIColor.redColor()
+        inputview.backgroundColor = UIColor.red
         view.addSubview(inputview)
         inputview.textView.delegate = self
-        inputview.frame = CGRectMake(10, 100, 100, inputview.height())
+        inputview.frame = CGRect(x: 10, y: 100, width: 100, height: inputview.height())
 
         
         one = CeShiOne()
         one.textView.tag = 1
-        one.backgroundColor = UIColor.redColor()
+        one.backgroundColor = UIColor.red
         view.addSubview(one)
         one.textView.delegate = self
-        one.frame = CGRectMake(130, 100, 200, one.height())
+        one.frame = CGRect(x: 130, y: 100, width: 200, height: one.height())
     }
     
-    func textViewDidChange(textView: UITextView) {
+    func textViewDidChange(_ textView: UITextView) {
         
         if textView.tag == 0 {
             
             
-            UIView.animateWithDuration(inputview.AnimationDuration) { [weak self]() -> Void in
-                self!.inputview.frame.size = CGSizeMake(self!.inputview.frame.width, self!.inputview.height())
+            UIView.animate(withDuration: inputview.AnimationDuration, animations: { [weak self]() -> Void in
+                self!.inputview.frame.size = CGSize(width: self!.inputview.frame.width, height: self!.inputview.height())
                 
                 print("输入之后高度变动inputview \(self!.inputview.changeH) 可用于操作依赖输入框view的空间")
-            }
+            }) 
         }else{
             
             
-            UIView.animateWithDuration(one.AnimationDuration) { [weak self]() -> Void in
-                self!.one.frame.size = CGSizeMake(self!.one.frame.width, self!.one.height())
+            UIView.animate(withDuration: one.AnimationDuration, animations: { [weak self]() -> Void in
+                self!.one.frame.size = CGSize(width: self!.one.frame.width, height: self!.one.height())
                 
                 print("输入之后高度变动One \(self!.one.changeH) 可用于操作依赖输入框view的空间")
-            }
+            }) 
         }
     }
 

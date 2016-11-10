@@ -207,13 +207,16 @@
 				TargetAttributes = {
 					F8CD697E1C9A497900FA4E70 = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0810;
 					};
 					F8CD69921C9A497900FA4E70 = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0810;
 						TestTargetID = F8CD697E1C9A497900FA4E70;
 					};
 					F8CD699D1C9A497900FA4E70 = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0810;
 						TestTargetID = F8CD697E1C9A497900FA4E70;
 					};
 				};
@@ -417,6 +420,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.DZM.----TextView----";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -428,6 +432,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.DZM.----TextView----";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -439,6 +444,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.DZM.----TextView----Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/自动增高TextView简单使用.app/自动增高TextView简单使用";
 			};
 			name = Debug;
@@ -451,6 +457,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.DZM.----TextView----Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/自动增高TextView简单使用.app/自动增高TextView简单使用";
 			};
 			name = Release;
@@ -462,6 +469,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.DZM.----TextView----UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "自动增高TextView简单使用";
 				USES_XCTRUNNER = YES;
 			};
@@ -474,6 +482,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.DZM.----TextView----UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "自动增高TextView简单使用";
 				USES_XCTRUNNER = YES;
 			};
@@ -498,6 +507,7 @@
 				F8CD69A91C9A497900FA4E70 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F8CD69AA1C9A497900FA4E70 /* Build configuration list for PBXNativeTarget "自动增高TextView简单使用Tests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +516,7 @@
 				F8CD69AC1C9A497900FA4E70 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F8CD69AD1C9A497900FA4E70 /* Build configuration list for PBXNativeTarget "自动增高TextView简单使用UITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +525,7 @@
 				F8CD69AF1C9A497900FA4E70 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
