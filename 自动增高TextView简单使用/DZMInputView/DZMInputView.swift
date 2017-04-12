@@ -17,7 +17,7 @@ class DZMInputView: UIView {
     
     fileprivate var OriginH:CGFloat = 0                             // 原来的高度
     fileprivate var IsInit:Bool = true                              // 是否是初始化第一次
-    fileprivate var TextViewSpace:CGFloat = 5                       // textView默认四周的间距
+    fileprivate var TextViewSpace:CGFloat = 5                       // textView默认四周的间距 勿动
     var TempDuration:Double = 0                                     // 用来临时记录的动画时间 方便继承后可以使用
     
     override func awakeFromNib() {
