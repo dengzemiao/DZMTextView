@@ -18,8 +18,7 @@ class CeShiOne: DZMInputView {
     override func addSubviews() {
         super.addSubviews()
         
-        
-        inset = UIEdgeInsetsMake(0, 100, 0, 0)
+        edgeInsets = UIEdgeInsetsMake(0, 100, 0, 0)
     }
 
     required init?(coder aDecoder: NSCoder) {

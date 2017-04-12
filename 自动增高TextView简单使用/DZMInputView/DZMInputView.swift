@@ -10,7 +10,7 @@ import UIKit
 
 class DZMInputView: UIView {
 
-    var inset: UIEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)      // 输入框的周边间距
+    var edgeInsets: UIEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)      // 输入框的周边间距
     var changeH:CGFloat = 0                                     // 高度变动之后的间距差
     var AnimationDuration:Double = 0.25                         // 动画时间
     var textView:UITextView!                                    // textView
@@ -56,8 +56,8 @@ class DZMInputView: UIView {
         
         let w = frame.size.width
         let h = frame.size.height
-        let textViewW = w - inset.right - inset.left
-        let textViewH = h - inset.top - inset.bottom
+        let textViewW = w - edgeInsets.right - edgeInsets.left
+        let textViewH = h - edgeInsets.top - edgeInsets.bottom
         
         if IsInit {
             IsInit = false
@@ -66,7 +66,7 @@ class DZMInputView: UIView {
         
         UIView.animate(withDuration: TempDuration, animations: { [weak self]() -> Void in
             
-            self!.textView.frame = CGRect(x: self!.inset.left, y: self!.inset.top, width: textViewW, height: textViewH)
+            self!.textView.frame = CGRect(x: self!.edgeInsets.left, y: self!.edgeInsets.top, width: textViewW, height: textViewH)
         }) 
 
     }
@@ -80,17 +80,22 @@ class DZMInputView: UIView {
         var textStr:String = textView.text
         
         if textView.text.isEmpty {
+            
             textStr = "1"
         }
         
         let maxW = textView.frame.width - textView.textContainerInset.left - textView.textContainerInset.right - 2*TextViewSpace
+        
         let textViewSize = (textStr as NSString).boundingRect(with: CGSize(width: maxW, height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName:textView.font!], context: nil)
         
-        let h = textViewSize.height + textView.textContainerInset.top + textView.textContainerInset.bottom + inset.top + inset.bottom
+        let h = ceil(textViewSize.height + textView.textContainerInset.top + textView.textContainerInset.bottom + edgeInsets.top + edgeInsets.bottom)
     
         if OriginH > 0 {
+            
             changeH = h - OriginH
+            
         }else{
+            
             changeH = 0
         }
         
