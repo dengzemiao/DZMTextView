@@ -86,7 +86,7 @@ class DZMInputView: UIView {
         
         let maxW = textView.frame.width - textView.textContainerInset.left - textView.textContainerInset.right - 2*TextViewSpace
         
-        let textViewSize = (textStr as NSString).boundingRect(with: CGSize(width: maxW, height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName:textView.font!], context: nil)
+        let textViewSize = (textStr as NSString).boundingRect(with: CGSize(width: floor(maxW), height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName:textView.font!], context: nil)
         
         let h = ceil(textViewSize.height + textView.textContainerInset.top + textView.textContainerInset.bottom + edgeInsets.top + edgeInsets.bottom)
     
