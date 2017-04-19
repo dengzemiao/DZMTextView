@@ -10,9 +10,8 @@ import UIKit
 
 class CeShiOne: DZMInputView {
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
+    override init() {
+        super.init()
     }
     
     override func addSubviews() {

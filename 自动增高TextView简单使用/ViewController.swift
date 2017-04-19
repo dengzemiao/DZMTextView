@@ -23,7 +23,7 @@ class ViewController: UIViewController,UITextViewDelegate {
         inputview.backgroundColor = UIColor.red
         view.addSubview(inputview)
         inputview.textView.delegate = self
-        inputview.frame = CGRect(x: 10, y: 100, width: 100, height: inputview.height())
+        inputview.frame = CGRect(x: 10, y: 100, width: 100, height: inputview.TextHeight())
 
         
         one = CeShiOne()
@@ -31,7 +31,7 @@ class ViewController: UIViewController,UITextViewDelegate {
         one.backgroundColor = UIColor.red
         view.addSubview(one)
         one.textView.delegate = self
-        one.frame = CGRect(x: 130, y: 100, width: 200, height: one.height())
+        one.frame = CGRect(x: 130, y: 100, width: 200, height: one.TextHeight())
     }
     
     func textViewDidChange(_ textView: UITextView) {
@@ -40,7 +40,7 @@ class ViewController: UIViewController,UITextViewDelegate {
             
             
             UIView.animate(withDuration: inputview.AnimationDuration, animations: { [weak self]() -> Void in
-                self!.inputview.frame.size = CGSize(width: self!.inputview.frame.width, height: self!.inputview.height())
+                self!.inputview.frame.size = CGSize(width: self!.inputview.frame.width, height: self!.inputview.TextHeight())
                 
                 print("输入之后高度变动inputview \(self!.inputview.changeH) 可用于操作依赖输入框view的空间")
             }) 
@@ -48,7 +48,7 @@ class ViewController: UIViewController,UITextViewDelegate {
             
             
             UIView.animate(withDuration: one.AnimationDuration, animations: { [weak self]() -> Void in
-                self!.one.frame.size = CGSize(width: self!.one.frame.width, height: self!.one.height())
+                self!.one.frame.size = CGSize(width: self!.one.frame.width, height: self!.one.TextHeight())
                 
                 print("输入之后高度变动One \(self!.one.changeH) 可用于操作依赖输入框view的空间")
             }) 

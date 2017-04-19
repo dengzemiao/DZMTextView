@@ -9,24 +9,24 @@
 import UIKit
 
 class DZMInputView: UIView {
-
-    var edgeInsets: UIEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)      // 输入框的周边间距
+    
+    var edgeInsets: UIEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5) // 输入框的周边间距
     var changeH:CGFloat = 0                                     // 高度变动之后的间距差
     var AnimationDuration:Double = 0.25                         // 动画时间
     var textView:UITextView!                                    // textView
+    var TempDuration:Double = 0                                 // 用来临时记录的动画时间 方便继承后可以使用
     
-    fileprivate var OriginH:CGFloat = 0                             // 原来的高度
-    fileprivate var IsInit:Bool = true                              // 是否是初始化第一次
-    fileprivate var TextViewSpace:CGFloat = 5                       // textView默认四周的间距 勿动
-    var TempDuration:Double = 0                                     // 用来临时记录的动画时间 方便继承后可以使用
+    private var OriginH:CGFloat = 0                             // 原来的高度
+    private var TextViewSpace:CGFloat = 5                       // textView默认四周的间距 勿动
+    private var IsInit:Bool = true                              // 是否是初始化第一次
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        addSubviews()
+    // 直接初始化
+    init() {
+        super.init(frame: CGRect.zero)
     }
     
-    override init(frame: CGRect) {
+    // 不允许直接设置frame
+    private override init(frame: CGRect) {
         super.init(frame: frame)
         
         addSubviews()
@@ -60,36 +60,38 @@ class DZMInputView: UIView {
         let textViewH = h - edgeInsets.top - edgeInsets.bottom
         
         if IsInit {
+            
             IsInit = false
+            
             TempDuration = 0
         }
         
         UIView.animate(withDuration: TempDuration, animations: { [weak self]() -> Void in
             
             self!.textView.frame = CGRect(x: self!.edgeInsets.left, y: self!.edgeInsets.top, width: textViewW, height: textViewH)
-        }) 
-
+        })
+        
     }
     
     /**
-     获取当前view的高度 没有字的时候获取默认高度
+     使用 text 可使用该方法获得高度
      */
-    func height() ->CGFloat {
+    func TextHeight() ->CGFloat {
         
-        // 计算text  假如有需要输入的是attributedText 计算attributedText则把这里的text 换成 attributedText
-        var textStr:String = textView.text
+        // 计算text
+        var textString:String = textView.text
         
         if textView.text.isEmpty {
             
-            textStr = "1"
+            textString = "1"
         }
         
         let maxW = textView.frame.width - textView.textContainerInset.left - textView.textContainerInset.right - 2*TextViewSpace
         
-        let textViewSize = (textStr as NSString).boundingRect(with: CGSize(width: floor(maxW), height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName:textView.font!], context: nil)
+        let textViewSize = (textString as NSString).boundingRect(with: CGSize(width: floor(maxW), height: CGFloat.greatestFiniteMagnitude), options: [NSStringDrawingOptions.usesLineFragmentOrigin,NSStringDrawingOptions.usesFontLeading], attributes: [NSFontAttributeName:textView.font!], context: nil)
         
         let h = ceil(textViewSize.height + textView.textContainerInset.top + textView.textContainerInset.bottom + edgeInsets.top + edgeInsets.bottom)
-    
+        
         if OriginH > 0 {
             
             changeH = h - OriginH
@@ -103,9 +105,60 @@ class DZMInputView: UIView {
         
         return h
     }
-
+    
+    /**
+     使用 attributedText 可使用该方法获得高度
+     
+     attrs: 当 attributedText 没有值 得时候进行使用计算 不设置则使用默认字体 textView.font
+     
+     */
+    func AttributedTextHeight(_ attrs: [String : Any]? = nil) ->CGFloat {
+        
+        // 计算attributedText
+        var textString:NSAttributedString = textView.attributedText
+        
+        if textString.string.isEmpty {
+            
+            // 属性是否需要自定义
+            var tempAttrs:[String : Any]!
+            
+            // 有自定义
+            if attrs != nil {
+                
+                tempAttrs = attrs
+                
+            }else{
+                // 无自定义
+                
+                tempAttrs = [NSFontAttributeName:textView.font!]
+            }
+            
+            textString = NSAttributedString(string: "1", attributes:tempAttrs)
+        }
+        
+        let maxW = textView.frame.width - textView.textContainerInset.left - textView.textContainerInset.right - 2*TextViewSpace
+        
+        let textViewSize = textString.boundingRect(with: CGSize(width: maxW, height:CGFloat.greatestFiniteMagnitude), options: [NSStringDrawingOptions.usesLineFragmentOrigin,NSStringDrawingOptions.usesFontLeading], context: nil)
+        
+        let h = ceil(textViewSize.height + textView.textContainerInset.top + textView.textContainerInset.bottom + edgeInsets.top + edgeInsets.bottom)
+        
+        if OriginH > 0 {
+            
+            changeH = h - OriginH
+            
+        }else{
+            
+            changeH = 0
+        }
+        
+        OriginH = h
+        
+        return h
+    }
+    
     required init?(coder aDecoder: NSCoder) {
+        
         fatalError("init(coder:) has not been implemented")
     }
-
+    
 }
