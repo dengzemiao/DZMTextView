@@ -22,7 +22,10 @@ class DZMInputView: UIView {
     
     // 直接初始化
     init() {
+        
         super.init(frame: CGRect.zero)
+        
+        addSubviews()
     }
     
     // 不允许直接设置frame
