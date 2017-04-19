@@ -30,13 +30,6 @@ class DZMInputView: UIView {
         addSubviews()
     }
     
-    // 不允许直接设置frame
-    private override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        addSubviews()
-    }
-    
     func addSubviews() {
         
         // 输入框
