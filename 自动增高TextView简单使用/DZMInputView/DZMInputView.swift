@@ -15,7 +15,6 @@ class DZMInputView: UIView {
     var AnimationDuration:Double = 0.25                         // 动画时间
     var textView:UITextView!                                    // textView
     var TempDuration:Double = 0                                 // 用来临时记录的动画时间 方便继承后可以使用
-    var maxHeight:CGFloat = 0                                   // 0表示不限制 一直增高
     
     private var OriginH:CGFloat = 0                             // 原来的高度
     private var TextViewSpace:CGFloat = 5                       // textView默认四周的间距 勿动
@@ -134,35 +133,6 @@ class DZMInputView: UIView {
     
     /// 计算
     private func calculationHeight(h:CGFloat) ->CGFloat {
-    
-        var h = h
-        
-        if maxHeight != 0 {
-            
-            if h > maxHeight {
-                
-                h = maxHeight
-                
-                if !textView.isScrollEnabled {
-                    
-                    textView.isScrollEnabled = true
-                }
-                
-            }else{
-                
-                if textView.isScrollEnabled {
-                    
-                    textView.isScrollEnabled = false
-                }
-            }
-            
-        }else{
-            
-            if textView.isScrollEnabled {
-                
-                textView.isScrollEnabled = false
-            }
-        }
         
         if OriginH > 0 {
             
