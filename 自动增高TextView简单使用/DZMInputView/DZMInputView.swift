@@ -15,10 +15,12 @@ class DZMInputView: UIView {
     var AnimationDuration:Double = 0.25                         // 动画时间
     var textView:UITextView!                                    // textView
     var TempDuration:Double = 0                                 // 用来临时记录的动画时间 方便继承后可以使用
+    var maxHeight:CGFloat = 0                                   // 0表示不限制 一直增高
     
     private var OriginH:CGFloat = 0                             // 原来的高度
     private var TextViewSpace:CGFloat = 5                       // textView默认四周的间距 勿动
     private var IsInit:Bool = true                              // 是否是初始化第一次
+    private let TempString:String = "1"                         // 用于当没有字符串的时候计算使用
     
     // 直接初始化
     init() {
@@ -86,7 +88,7 @@ class DZMInputView: UIView {
         
         if textView.text.isEmpty {
             
-            textString = "1"
+            textString = TempString
         }
         
         let maxW = textView.frame.width - textView.textContainerInset.left - textView.textContainerInset.right - 2*TextViewSpace
@@ -95,18 +97,7 @@ class DZMInputView: UIView {
         
         let h = ceil(textViewSize.height + textView.textContainerInset.top + textView.textContainerInset.bottom + edgeInsets.top + edgeInsets.bottom)
         
-        if OriginH > 0 {
-            
-            changeH = h - OriginH
-            
-        }else{
-            
-            changeH = 0
-        }
-        
-        OriginH = h
-        
-        return h
+        return calculationHeight(h: h)
     }
     
     /**
@@ -136,7 +127,7 @@ class DZMInputView: UIView {
                 tempAttrs = [NSFontAttributeName:textView.font!]
             }
             
-            textString = NSAttributedString(string: "1", attributes:tempAttrs)
+            textString = NSAttributedString(string: TempString, attributes:tempAttrs)
         }
         
         let maxW = textView.frame.width - textView.textContainerInset.left - textView.textContainerInset.right - 2*TextViewSpace
@@ -144,6 +135,41 @@ class DZMInputView: UIView {
         let textViewSize = textString.boundingRect(with: CGSize(width: maxW, height:CGFloat.greatestFiniteMagnitude), options: [NSStringDrawingOptions.usesLineFragmentOrigin,NSStringDrawingOptions.usesFontLeading], context: nil)
         
         let h = ceil(textViewSize.height + textView.textContainerInset.top + textView.textContainerInset.bottom + edgeInsets.top + edgeInsets.bottom)
+        
+        return calculationHeight(h: h)
+    }
+    
+    /// 计算
+    private func calculationHeight(h:CGFloat) ->CGFloat {
+    
+        var h = h
+        
+        if maxHeight != 0 {
+            
+            if h > maxHeight {
+                
+                h = maxHeight
+                
+                if !textView.isScrollEnabled {
+                    
+                    textView.isScrollEnabled = true
+                }
+                
+            }else{
+                
+                if textView.isScrollEnabled {
+                    
+                    textView.isScrollEnabled = false
+                }
+            }
+            
+        }else{
+            
+            if textView.isScrollEnabled {
+                
+                textView.isScrollEnabled = false
+            }
+        }
         
         if OriginH > 0 {
             

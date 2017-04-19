@@ -20,6 +20,7 @@ class ViewController: UIViewController,UITextViewDelegate {
         // 用于继承修改 inset 即可 不继承可以直接使用
         inputview = DZMInputView()
         inputview.textView.tag = 0
+        inputview.maxHeight = 50
         inputview.backgroundColor = UIColor.red
         view.addSubview(inputview)
         inputview.textView.delegate = self
