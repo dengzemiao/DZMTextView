@@ -122,10 +122,6 @@ class DZMTextView: UITextView {
     
     @objc private func textDidChange() {
         
-        print(font,text)
-        
-        print(font,attributedText)
-        
         placeholderLabel.isHidden = (!text.isEmpty || !attributedText.string.isEmpty)
     }
     
