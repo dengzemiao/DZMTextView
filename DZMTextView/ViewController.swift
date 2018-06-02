@@ -60,12 +60,12 @@ class ViewController: UIViewController,UITextViewDelegate {
         
         InputView = DZMInputView()
         InputView.backgroundColor = UIColor.red
-        InputView.edgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
+        InputView.contentInset = UIEdgeInsetsMake(5, 5, 5, 5)
         InputView.textView.backgroundColor = UIColor.green
         InputView.textView.font = UIFont.systemFont(ofSize: 20)
         InputView.textView.placeholder = "DZMInputView自动计算高度"
         InputView.textView.delegate = self
-        InputView.frame = CGRect(x: 10 , y: 300, width: 300, height: InputView.textHeight())
+        InputView.frame = CGRect(x: 10 , y: 300, width: 300, height: InputView.Height())
         view.addSubview(InputView)
     }
     
@@ -75,7 +75,7 @@ class ViewController: UIViewController,UITextViewDelegate {
         
         UIView.animate(withDuration: 0.25) { [weak self] () in
             
-            self?.InputView.frame = CGRect(x: 10 , y: 300, width: 300, height: self!.InputView.textHeight())
+            self?.InputView.frame = CGRect(x: 10 , y: 300, width: 300, height: self!.InputView.Height())
             
             // 因为内部TextView使用Layout布局
             self?.InputView.layoutIfNeeded()

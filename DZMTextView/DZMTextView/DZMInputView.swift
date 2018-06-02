@@ -11,16 +11,20 @@ import UIKit
 class DZMInputView: UIView {
 
     /// 输入框四周间距
-    var edgeInsets:UIEdgeInsets = UIEdgeInsets.zero {
+    var contentInset:UIEdgeInsets = UIEdgeInsets.zero {
         
-        didSet{ updateLayoutTextView() }
+        didSet{
+            
+            updateLayoutTextView()
+            
+            textView.setNeedsLayout()
+        }
     }
     
     private(set) var textView:DZMTextView!
     private var textViewH:[NSLayoutConstraint] = []
     private var textViewV:[NSLayoutConstraint] = []
 
-    // MARK: 初始化
     override func awakeFromNib() {
         
         super.awakeFromNib()
@@ -35,12 +39,6 @@ class DZMInputView: UIView {
         creatUI()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: 创建
     private func creatUI() {
         
         textView = DZMTextView()
@@ -60,8 +58,8 @@ class DZMInputView: UIView {
         if !textViewH.isEmpty { removeConstraints(textViewH) }
         if !textViewV.isEmpty { removeConstraints(textViewV) }
         
-        let textViewLayoutH:String = "H:|-\(edgeInsets.left)-[textView]-\(edgeInsets.right)-|"
-        let textViewLayoutV:String = "V:|-\(edgeInsets.top)-[textView]-\(edgeInsets.bottom)-|"
+        let textViewLayoutH:String = "H:|-\(contentInset.left)-[textView]-\(contentInset.right)-|"
+        let textViewLayoutV:String = "V:|-\(contentInset.top)-[textView]-\(contentInset.bottom)-|"
         
         textViewH = NSLayoutConstraint.constraints(withVisualFormat: textViewLayoutH, options: NSLayoutFormatOptions.directionLeadingToTrailing, metrics: nil, views: ["textView":textView])
         textViewV = NSLayoutConstraint.constraints(withVisualFormat: textViewLayoutV, options: NSLayoutFormatOptions.directionLeadingToTrailing, metrics: nil, views: ["textView":textView])
@@ -70,18 +68,14 @@ class DZMInputView: UIView {
         addConstraints(textViewV)
     }
     
-    // MARK: 计算
+    /// 获取DZMInputView高度,默认返回一行高度
+    func Height() ->CGFloat {
+        
+        return DZMTextViewHeight(textView) + contentInset.top + contentInset.bottom
+    }
     
-    /// 获取UITextView的高度
-    /// 没有内容默认返回一行高度
-    ///
-    /// - Returns: 高度
-    func textHeight(_ maxW:CGFloat? = nil) ->CGFloat {
+    required init?(coder aDecoder: NSCoder) {
         
-        var textHeight = textView.textHeight(textView.font!, maxW)
-        
-        textHeight = textHeight + edgeInsets.top + edgeInsets.bottom
-        
-        return textHeight
+        fatalError("init(coder:) has not been implemented")
     }
 }

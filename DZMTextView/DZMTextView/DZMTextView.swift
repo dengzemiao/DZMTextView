@@ -8,37 +8,76 @@
 
 import UIKit
 
-/// 默认Placeholder字体颜色
-let DZMPlaceholderColor:UIColor = UIColor.gray.withAlphaComponent(0.7)
+/// 临时文字
+private let DZMTempString:String = "D"
+
+/// TextView内容左右默认间距
+private let DZMTextViewTextContainerInsetLR:CGFloat = 5.0
+
+/// 获取TextView高度
+func DZMTextViewHeight(_ textView:UITextView) ->CGFloat {
+    
+    var h:CGFloat = 0
+    
+    let attributedText = textView.attributedText!
+    
+    let font = textView.font ?? UIFont.systemFont(ofSize: 18)
+    
+    let frame = textView.frame
+    
+    let textContainerInset = textView.textContainerInset
+    
+    let string = attributedText.string.isEmpty ? NSAttributedString(string: DZMTempString, attributes: [NSAttributedStringKey.font : font]) : attributedText
+    
+    let size = CGSize(width: (frame.width - textContainerInset.left - textContainerInset.right - 2*DZMTextViewTextContainerInsetLR), height: CGFloat.greatestFiniteMagnitude)
+    
+    h = string.size(size).height
+    
+    h = ceil(h + textContainerInset.top + textContainerInset.bottom)
+    
+    return h
+}
 
 class DZMTextView: UITextView {
     
     /// placeholder
-    var placeholder: String? {
+    var placeholder:String? {
         
-        didSet{ placeholderLabel.text = placeholder }
+        didSet{ placeholderLabel?.text = placeholder }
+    }
+    
+    /// placeholderFont
+    var placeholderFont:UIFont! {
+        
+        didSet{ placeholderLabel?.font = placeholderFont }
+    }
+    
+    /// placeholderTextColor
+    var placeholderTextColor:UIColor = UIColor.gray.withAlphaComponent(0.7) {
+        
+        didSet{ placeholderLabel?.textColor = placeholderTextColor }
     }
     
     /// attributedPlaceholder
-    var attributedPlaceholder: NSAttributedString? {
+    var attributedPlaceholder:NSAttributedString? {
         
-        didSet{ placeholderLabel.attributedText = attributedPlaceholder }
+        didSet{ placeholderLabel?.attributedText = attributedPlaceholder }
     }
     
     /// font
-    override var font: UIFont? {
+    override var font:UIFont? {
         
-        didSet{ placeholderLabel.font = font }
+        didSet{ placeholderFont = font }
     }
     
     /// textContainerInset
-    override var textContainerInset: UIEdgeInsets {
+    override var textContainerInset:UIEdgeInsets {
         
         didSet{ setNeedsLayout() }
     }
     
     /// text
-    override var text: String! {
+    override var text:String! {
         
         didSet{
             
@@ -48,7 +87,7 @@ class DZMTextView: UITextView {
     }
     
     /// attributedText
-    override var attributedText: NSAttributedString! {
+    override var attributedText:NSAttributedString! {
         
         didSet{
             
@@ -58,8 +97,6 @@ class DZMTextView: UITextView {
     }
     
     private var placeholderLabel:DZMLabel!
-    private var placeholderH:[NSLayoutConstraint]!
-    private var placeholderV:[NSLayoutConstraint]!
 
     // MARK: 初始化
     override func awakeFromNib() {
@@ -76,11 +113,6 @@ class DZMTextView: UITextView {
         creatUI()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     // MARK: 创建
     private func creatUI() {
         
@@ -91,7 +123,7 @@ class DZMTextView: UITextView {
         placeholderLabel.textAlignmentVertical = .top
         placeholderLabel.isUserInteractionEnabled = false
         placeholderLabel.backgroundColor = UIColor.clear
-        placeholderLabel.textColor = DZMPlaceholderColor
+        placeholderLabel.textColor = placeholderTextColor
         addSubview(placeholderLabel)
         
         register()
@@ -125,8 +157,14 @@ class DZMTextView: UITextView {
         placeholderLabel.isHidden = (!text.isEmpty || !attributedText.string.isEmpty)
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     deinit {
         
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UITextViewTextDidChange, object: nil)
     }
+    
 }
