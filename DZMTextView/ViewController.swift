@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController,UITextViewDelegate {
+class ViewController: UIViewController,UITextViewDelegate,DZMKBNotificationProtocol {
     
     var label:DZMLabel!
     
@@ -25,6 +25,8 @@ class ViewController: UIViewController,UITextViewDelegate {
         setDZMTextView()
         
         setDZMInputView()
+        
+        setDZMKBNotification()
     }
     
     // DZMLabel 使用
@@ -69,6 +71,12 @@ class ViewController: UIViewController,UITextViewDelegate {
         view.addSubview(InputView)
     }
     
+    // DZMKBNotification
+    func setDZMKBNotification() {
+        
+        DZMKBNotification.add(self)
+    }
+    
     // MARK: UITextViewDelegate
     
     func textViewDidChange(_ textView: UITextView) {
@@ -82,6 +90,13 @@ class ViewController: UIViewController,UITextViewDelegate {
         }
     }
     
+    // MARK: DZMKBNotificationProtocol
+    
+    func keyboard(willShow notification: NSNotification) {
+        
+        print(notification)
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         view.endEditing(true)
@@ -90,6 +105,11 @@ class ViewController: UIViewController,UITextViewDelegate {
     override func didReceiveMemoryWarning() {
         
         super.didReceiveMemoryWarning()
+    }
+    
+    deinit {
+        
+        DZMKBNotification.remove(self)
     }
 }
 

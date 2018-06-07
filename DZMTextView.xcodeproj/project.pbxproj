@@ -18,6 +18,7 @@
 		AF5130C3204F933400B97261 /* DZMInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5130C2204F933400B97261 /* DZMInputView.swift */; };
 		AF86B8602050DFE400654389 /* String+DZMExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF86B85F2050DFE400654389 /* String+DZMExtension.swift */; };
 		AFFBDE09204FDD88004501B9 /* DZMLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFBDE08204FDD88004501B9 /* DZMLabel.swift */; };
+		AFFF975320C8F27D0099CC3D /* DZMKBNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFF975220C8F27D0099CC3D /* DZMKBNotification.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		AF5130C2204F933400B97261 /* DZMInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DZMInputView.swift; sourceTree = "<group>"; };
 		AF86B85F2050DFE400654389 /* String+DZMExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DZMExtension.swift"; sourceTree = "<group>"; };
 		AFFBDE08204FDD88004501B9 /* DZMLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DZMLabel.swift; sourceTree = "<group>"; };
+		AFFF975220C8F27D0099CC3D /* DZMKBNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DZMKBNotification.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 				AF5130C2204F933400B97261 /* DZMInputView.swift */,
 				AF5130C0204F926D00B97261 /* DZMTextView.swift */,
 				AFFBDE08204FDD88004501B9 /* DZMLabel.swift */,
+				AFFF975220C8F27D0099CC3D /* DZMKBNotification.swift */,
 				AF86B85F2050DFE400654389 /* String+DZMExtension.swift */,
 			);
 			path = DZMTextView;
@@ -284,6 +287,7 @@
 				AF513092204F91B200B97261 /* AppDelegate.swift in Sources */,
 				AF5130C1204F926D00B97261 /* DZMTextView.swift in Sources */,
 				AF5130C3204F933400B97261 /* DZMInputView.swift in Sources */,
+				AFFF975320C8F27D0099CC3D /* DZMKBNotification.swift in Sources */,
 				AF86B8602050DFE400654389 /* String+DZMExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
