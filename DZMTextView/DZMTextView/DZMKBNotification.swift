@@ -8,6 +8,29 @@
 
 import UIKit
 
+/* info key
+ 
+// 初始Frame
+UIKeyboardFrameBeginUserInfoKey
+ 
+// 结束Frame
+UIKeyboardFrameEndUserInfoKey
+ 
+// 动画时间
+UIKeyboardAnimationDurationUserInfoKey
+ 
+// UIViewAnimationCurve
+UIKeyboardAnimationCurveUserInfoKey
+ 
+// 是否是当前App的键盘
+UIKeyboardIsLocalUserInfoKey
+
+// 已弃用
+UIKeyboardCenterBeginUserInfoKey
+UIKeyboardCenterEndUserInfoKey
+UIKeyboardBoundsUserInfoKey
+*/
+
 @objc protocol DZMKBNotificationProtocol:NSObjectProtocol {
     
     /// 键盘开始显示
