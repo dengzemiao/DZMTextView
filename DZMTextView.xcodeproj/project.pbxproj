@@ -17,6 +17,7 @@
 		AF5130C1204F926D00B97261 /* DZMTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5130C0204F926D00B97261 /* DZMTextView.swift */; };
 		AF5130C3204F933400B97261 /* DZMInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5130C2204F933400B97261 /* DZMInputView.swift */; };
 		AF86B8602050DFE400654389 /* String+DZMExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF86B85F2050DFE400654389 /* String+DZMExtension.swift */; };
+		AFA5207E217F07EB00B7D6F8 /* DZMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA5207D217F07EB00B7D6F8 /* DZMTextField.swift */; };
 		AFFBDE09204FDD88004501B9 /* DZMLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFBDE08204FDD88004501B9 /* DZMLabel.swift */; };
 		AFFF975320C8F27D0099CC3D /* DZMKBNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFF975220C8F27D0099CC3D /* DZMKBNotification.swift */; };
 /* End PBXBuildFile section */
@@ -55,6 +56,7 @@
 		AF5130C0204F926D00B97261 /* DZMTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DZMTextView.swift; sourceTree = "<group>"; };
 		AF5130C2204F933400B97261 /* DZMInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DZMInputView.swift; sourceTree = "<group>"; };
 		AF86B85F2050DFE400654389 /* String+DZMExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DZMExtension.swift"; sourceTree = "<group>"; };
+		AFA5207D217F07EB00B7D6F8 /* DZMTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DZMTextField.swift; sourceTree = "<group>"; };
 		AFFBDE08204FDD88004501B9 /* DZMLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DZMLabel.swift; sourceTree = "<group>"; };
 		AFFF975220C8F27D0099CC3D /* DZMKBNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DZMKBNotification.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -141,6 +143,7 @@
 			children = (
 				AF5130C2204F933400B97261 /* DZMInputView.swift */,
 				AF5130C0204F926D00B97261 /* DZMTextView.swift */,
+				AFA5207D217F07EB00B7D6F8 /* DZMTextField.swift */,
 				AFFBDE08204FDD88004501B9 /* DZMLabel.swift */,
 				AFFF975220C8F27D0099CC3D /* DZMKBNotification.swift */,
 				AF86B85F2050DFE400654389 /* String+DZMExtension.swift */,
@@ -283,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFFBDE09204FDD88004501B9 /* DZMLabel.swift in Sources */,
+				AFA5207E217F07EB00B7D6F8 /* DZMTextField.swift in Sources */,
 				AF513094204F91B200B97261 /* ViewController.swift in Sources */,
 				AF513092204F91B200B97261 /* AppDelegate.swift in Sources */,
 				AF5130C1204F926D00B97261 /* DZMTextView.swift in Sources */,

@@ -8,11 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController,UITextViewDelegate,DZMKBNotificationProtocol {
+class ViewController: UIViewController,UITextViewDelegate,DZMKBNotificationProtocol,DZMTextFieldDelegate {
     
     var label:DZMLabel!
     
     var textView:DZMTextView!
+    
+    var textField:DZMTextField!
     
     var InputView:DZMInputView!
     
@@ -23,6 +25,8 @@ class ViewController: UIViewController,UITextViewDelegate,DZMKBNotificationProto
         setDZMLabel()
         
         setDZMTextView()
+        
+        setDZMTextField()
         
         setDZMInputView()
         
@@ -57,6 +61,16 @@ class ViewController: UIViewController,UITextViewDelegate,DZMKBNotificationProto
 //        textView.attributedPlaceholder = attributedPlaceholder
     }
     
+    func setDZMTextField() {
+        
+        textField = DZMTextField()
+        textField.aDelegate = self
+        textField.placeholder = "DZMTextField"
+        textField.backgroundColor = UIColor.red
+        textField.frame = CGRect(x: 10, y: 300, width: 300, height: 50)
+        view.addSubview(textField)
+    }
+    
     // DZMInputView 使用
     func setDZMInputView() {
         
@@ -67,7 +81,7 @@ class ViewController: UIViewController,UITextViewDelegate,DZMKBNotificationProto
         InputView.textView.font = UIFont.systemFont(ofSize: 20)
         InputView.textView.placeholder = "DZMInputView自动计算高度"
         InputView.textView.delegate = self
-        InputView.frame = CGRect(x: 10 , y: 300, width: 300, height: InputView.Height())
+        InputView.frame = CGRect(x: 10 , y: 400, width: 300, height: InputView.Height())
         view.addSubview(InputView)
     }
     
