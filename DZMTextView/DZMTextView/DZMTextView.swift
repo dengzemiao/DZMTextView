@@ -61,7 +61,12 @@ class DZMTextView: UITextView {
     /// attributedPlaceholder
     var attributedPlaceholder:NSAttributedString? {
         
-        didSet{ placeholderLabel?.attributedText = attributedPlaceholder }
+        didSet{
+            
+            placeholderLabel?.attributedText = attributedPlaceholder
+            
+            placeholderLabel.lineBreakMode = .byTruncatingTail
+        }
     }
     
     /// font

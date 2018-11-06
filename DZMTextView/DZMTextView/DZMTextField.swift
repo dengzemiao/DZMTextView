@@ -58,7 +58,7 @@ class DZMTextField: UITextField, UITextFieldDelegate {
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         
-        return aDelegate?.textFieldShouldEndEditing?(textField) ?? false
+        return aDelegate?.textFieldShouldEndEditing?(textField) ?? true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -66,6 +66,7 @@ class DZMTextField: UITextField, UITextFieldDelegate {
         aDelegate?.textFieldDidEndEditing?(textField)
     }
     
+    @available(iOS 10.0, *)
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
         
         aDelegate?.textFieldDidEndEditing?(textField, reason: reason)
