@@ -8,15 +8,6 @@
 
 import UIKit
 
-/* info key
- 1、UIKeyboardWillShowNotification-将要弹出键盘
- 2、UIKeyboardDidShowNotification-显示键盘
- 3、UIKeyboardWillHideNotification-将要隐藏键盘
- 4、UIKeyboardDidHideNotification-键盘已经隐藏
- 5、UIKeyboardWillChangeFrameNotification-键盘将要改变frame
- 6、UIKeyboardDidChangeFrameNotification-键盘已经改变frame
-*/
-
 @objc protocol DZMNotificationProtocol:NSObjectProtocol {
     
     // MARK: 键盘
