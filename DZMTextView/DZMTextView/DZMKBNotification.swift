@@ -8,27 +8,13 @@
 
 import UIKit
 
-/* info key
- 
-// 初始Frame
-UIKeyboardFrameBeginUserInfoKey
- 
-// 结束Frame
-UIKeyboardFrameEndUserInfoKey
- 
-// 动画时间
-UIKeyboardAnimationDurationUserInfoKey
- 
-// UIViewAnimationCurve
-UIKeyboardAnimationCurveUserInfoKey
- 
-// 是否是当前App的键盘
-UIKeyboardIsLocalUserInfoKey
-
-// 已弃用
-UIKeyboardCenterBeginUserInfoKey
-UIKeyboardCenterEndUserInfoKey
-UIKeyboardBoundsUserInfoKey
+/* KEY
+ 1、UIKeyboardWillShowNotification - 将要弹出键盘
+ 2、UIKeyboardDidShowNotification - 显示键盘
+ 3、UIKeyboardWillHideNotification - 将要隐藏键盘
+ 4、UIKeyboardDidHideNotification - 键盘已经隐藏
+ 5、UIKeyboardWillChangeFrameNotification - 键盘将要改变frame
+ 6、UIKeyboardDidChangeFrameNotification - 键盘已经改变frame
 */
 
 @objc protocol DZMKBNotificationProtocol:NSObjectProtocol {
@@ -53,7 +39,7 @@ UIKeyboardBoundsUserInfoKey
 class DZMKBNotification: NSObject {
     
     /// 添加键盘监听
-    class func add(_ object:DZMKBNotificationProtocol){
+    class func add(_ object:DZMKBNotificationProtocol) {
         
         let notificationCenter:NotificationCenter = NotificationCenter.default
         

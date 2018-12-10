@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF31E6D221BE0EED00CABF62 /* DZMNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF31E6D121BE0EED00CABF62 /* DZMNotification.swift */; };
 		AF513092204F91B200B97261 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF513091204F91B200B97261 /* AppDelegate.swift */; };
 		AF513094204F91B200B97261 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF513093204F91B200B97261 /* ViewController.swift */; };
 		AF513097204F91B200B97261 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF513095204F91B200B97261 /* Main.storyboard */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AF31E6D121BE0EED00CABF62 /* DZMNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DZMNotification.swift; sourceTree = "<group>"; };
 		AF51308E204F91B200B97261 /* DZMTextView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DZMTextView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF513091204F91B200B97261 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF513093204F91B200B97261 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				AFA5207D217F07EB00B7D6F8 /* DZMTextField.swift */,
 				AFFBDE08204FDD88004501B9 /* DZMLabel.swift */,
 				AFFF975220C8F27D0099CC3D /* DZMKBNotification.swift */,
+				AF31E6D121BE0EED00CABF62 /* DZMNotification.swift */,
 				AF86B85F2050DFE400654389 /* String+DZMExtension.swift */,
 			);
 			path = DZMTextView;
@@ -287,6 +290,7 @@
 			files = (
 				AFFBDE09204FDD88004501B9 /* DZMLabel.swift in Sources */,
 				AFA5207E217F07EB00B7D6F8 /* DZMTextField.swift in Sources */,
+				AF31E6D221BE0EED00CABF62 /* DZMNotification.swift in Sources */,
 				AF513094204F91B200B97261 /* ViewController.swift in Sources */,
 				AF513092204F91B200B97261 /* AppDelegate.swift in Sources */,
 				AF5130C1204F926D00B97261 /* DZMTextView.swift in Sources */,
