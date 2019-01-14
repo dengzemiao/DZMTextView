@@ -33,17 +33,17 @@ import UIKit
     /// APP启动回调
     @objc optional func app(didFinishLaunching notification:NSNotification)
     
-    /// APP将要进入后台
-    @objc optional func app(willResignActive notification:NSNotification)
+    /// APP从后台将要进入前台
+    @objc optional func app(willEnterForeground notification:NSNotification)
     
     /// (APP启动 || APP从后台)进入前台完成
     @objc optional func app(didBecomeActive notification:NSNotification)
     
+    /// APP将要进入后台
+    @objc optional func app(willResignActive notification:NSNotification)
+    
     /// APP已经进入后台
     @objc optional func app(didEnterBackground notification:NSNotification)
-    
-    /// APP从后台将要进入前台
-    @objc optional func app(willEnterForeground notification:NSNotification)
     
     /// APP将要退出
     @objc optional func app(willTerminate notification:NSNotification)
@@ -72,7 +72,7 @@ import UIKit
 }
 
 class DZMNotification: NSObject {
-
+    
     // MARK: 键盘
     
     /// 添加监听
@@ -167,10 +167,10 @@ class DZMNotification: NSObject {
             notificationCenter.addObserver(object, selector: #selector(object.app(didFinishLaunching:)), name: NSNotification.Name.UIApplicationDidFinishLaunching, object: nil)
         }
         
-        // APP将要进入后台
-        if object.responds(to: #selector(object.app(willResignActive:))) {
+        // APP从后台将要进入前台
+        if object.responds(to: #selector(object.app(willEnterForeground:))) {
             
-            notificationCenter.addObserver(object, selector: #selector(object.app(willResignActive:)), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+            notificationCenter.addObserver(object, selector: #selector(object.app(willEnterForeground:)), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         }
         
         // (APP启动 || APP从后台)进入前台完成
@@ -179,16 +179,16 @@ class DZMNotification: NSObject {
             notificationCenter.addObserver(object, selector: #selector(object.app(didBecomeActive:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         }
         
+        // APP将要进入后台
+        if object.responds(to: #selector(object.app(willResignActive:))) {
+            
+            notificationCenter.addObserver(object, selector: #selector(object.app(willResignActive:)), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+        }
+        
         // APP已经进入后台
         if object.responds(to: #selector(object.app(didEnterBackground:))) {
             
             notificationCenter.addObserver(object, selector: #selector(object.app(didEnterBackground:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
-        }
-        
-        // APP从后台将要进入前台
-        if object.responds(to: #selector(object.app(willEnterForeground:))) {
-            
-            notificationCenter.addObserver(object, selector: #selector(object.app(willEnterForeground:)), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         }
         
         // APP将要退出
