@@ -84,21 +84,13 @@ class DZMTextView: UITextView {
     /// text
     override var text:String! {
         
-        didSet{
-            
-            textDidChange()
-            delegate?.textViewDidChange?(self)
-        }
+        didSet{ textDidChange() }
     }
     
     /// attributedText
     override var attributedText:NSAttributedString! {
         
-        didSet{
-            
-            textDidChange()
-            delegate?.textViewDidChange?(self)
-        }
+        didSet{ textDidChange() }
     }
     
     private var placeholderLabel:DZMLabel!
